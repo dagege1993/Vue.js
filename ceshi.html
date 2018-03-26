@@ -40,6 +40,45 @@
     <butto v-on:click="reverseMessage">逆转消息</butto>
 </div>
 
+
+<!--v-model 表单输入和应用状态之间的双向绑定-->
+<div id="app-6">
+    <p>{{message}}</p>
+    <input v-model="message">
+</div>
+
+
+<!--<ol>-->
+<!--&lt;!&ndash;创建一个todo-item组件的实例 &ndash;&gt;-->
+<!--<todo-item></todo-item>-->
+<!--</ol>-->
+
+
+<div>
+    <ol>
+        <!-- 我们为每个todo-item提供todo对象
+         todo对象是变量，及内容是动态的
+         我们也需要为每个组件提供一个key
+
+         -->
+        <todo-item
+                v-for="item in groceryList"
+                v-bind:todo="item"
+                v-bind:key="item.id">
+        </todo-item>
+    </ol>
+</div>
+
+<!--大型应用讲整个程序分块-->
+<div id="app111">
+    <app-nav></app-nav>
+    <app-view>
+        <app-sidebar></app-sidebar>
+        <app-content></app-content>
+    </app-view>
+</div>
+
+
 </body>
 </html>
 
