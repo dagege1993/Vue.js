@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无标题文档</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .container {
+            width: 500px;
+        }
+
+        .junmbotron {
+            padding-top: 0;
+            padding-bottom: 0;
+        }
+
+        .panel {
+            margin-top: 20px;
+        }
+
+
+    </style>
+    <!-- 开发环境版本，包含了用帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+</head>
+<body>
+<div id="app" class="container jumbotron">
+    <h1>Hello,{{name}}!</h1>
+    <div class="input-group">
+        <input type="text" class="form-control" placeholder="任务的内容。。。"
+               v-model="message">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" v-on:click="add">Go</button>
+        </span>
+    </div>
+
+    <div class="panel-heading">当前任务为：{{message}}</div>
+    <ul class="list-group">
+        <li class="list-group-item" v-for="(item,index) in list">{{index+1}}:{{item.text}}
+            <button type="button" class="close" v-on:click="remove(index)">&times;</button>
+        </li>
+
+    </ul>
+    <div class="panel-footer">任务总计：{{list.length}}</div>
+
+
+</div>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            name: 'todoList',
+            message: '',
+            list: [
+                {text: '申明式渲染'},
+                {text: '条件与循环'},
+                {text: '用户处理和输入'}]
+            
+
+        },
+        methods :{
+            add:function () {
+                this.list.unshift({text:this.message});
+            },
+            remove:function (index) {
+                this.list.splice(index,1);
+            }
+        }
+    });
+
+
+</script>
+
+</body>
+</html>

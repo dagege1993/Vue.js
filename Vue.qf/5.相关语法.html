@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>相关语法</title>
+</head>
+<body>
+<script>
+//    function Foo() {
+//
+//    }
+//    //        Foo.prototype.constructor = Foo ;   这句话是默认成立的
+//    Foo.prototype = {
+//        showName: function () {
+//        },
+//        constructor: Foo      // 这样是为了防止改变原型对象下的唯一默认属性。
+//    };
+//
+//    var obj = new Foo();
+//    console.log(obj.constructor);
+
+
+        function Foo() {
+
+        }
+        function Bar() {
+
+        }
+        Foo.prototype = Bar.prototype;
+        var obj = new Foo();
+        console.log(obj instanceof  Bar);
+
+</script>
+
+
+constructor 原型对象下唯一默认自带的属性，用于查看对象的构造函数
+instanceof 左边是实例对象，右边是构造函数，它会检查右边的构造函数的原型对象是否再左边对象的原型链上
+in 和 for in ， in运算符返回一个布尔值，表示一个对象是否有某个属性, for in 循环可以获得对象所有可枚举属性
+
+</body>
+</html>
